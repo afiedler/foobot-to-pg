@@ -6,3 +6,5 @@ namespace :db do
     ActiveRecord::Migrator.migrate('db/migrate', ENV["VERSION"] ? ENV["VERSION"].to_i : nil)
   end
 end
+
+Dir.glob('tasks/*.rake').each { |r| import r }

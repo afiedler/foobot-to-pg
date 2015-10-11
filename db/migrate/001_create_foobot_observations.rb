@@ -11,5 +11,7 @@ class CreateFoobotObservations < ActiveRecord::Migration
       t.decimal :pm100
       t.decimal :voc100
     end
+
+    add_index :foobot_observations, [:uuid, :ts], unique: true
   end
 end
