@@ -7,6 +7,7 @@ your data down and store it on Heroku.
 ### The no-console way
 
 Click the deploy to Herkou button below:
+
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
 Then, you'll need to create a Heroku account if you don't already have one. Next, Heroku will
@@ -46,6 +47,6 @@ heroku config:set FOOBOT_NAME=<name>
 
 You'll need to add and configure the scheduler as described above.
 
-## Questions or Want to Contribute?
+## Questions or want to contribute?
 Email andy@andyfiedler.com or create a PR.
 
