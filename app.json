@@ -1,0 +1,6 @@
+{
+  "name": "Foobot To Postgres",
+  "description": "Fetches data from your Foobot and adds it to a Postgres database",
+  "repository": "https://github.com/afiedler/foobot-to-pg",
+  "keywords": ["foobot", "iot"]
+}
