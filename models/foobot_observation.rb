@@ -1,16 +1,14 @@
-require 'activerecord'
+require 'active_record'
 
 class FoobotObservation < ActiveRecord::Base
-  [ "time", "allpolu", "gaspolu", "tmp", "hum", "pm", "pm100", "voc100" ]
 
   SENSOR_TO_ATTRIBUTE_MAPPING = {
-    'allplou' => :all_pollution,
-    'gaspolu' => :gas_pollution,
+    'allpollu' => :all_pollution,
     'tmp' => :temperature,
     'hum' => :humidity,
     'pm' => :pm,
-    'pm100' => :pm100,
-    'voc100' => :voc100
+    'co2' => :co2,
+    'voc' => :voc
   }
 
   #
@@ -25,13 +23,13 @@ class FoobotObservation < ActiveRecord::Base
   #
   # @param [Array] sensors list of sensors from API
   # @param [Array] row data row
-  def self.create_from_api_json!(sensors,row)
+  def self.create_from_api_json!(sensors, uuid, row)
     time_index = sensors.find_index('time')
     ts = Time.at(row[time_index])
-    fo = self.new(ts: ts)
+    fo = self.new(ts: ts, uuid: uuid)
     SENSOR_TO_ATTRIBUTE_MAPPING.each do |k,v|
       idx = sensors.find_index(k)
-      fo.attributes[v] = row[idx]
+      fo.send("#{v}=", row[idx])
     end
     fo.save!
   end

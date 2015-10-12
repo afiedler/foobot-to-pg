@@ -4,12 +4,11 @@ class CreateFoobotObservations < ActiveRecord::Migration
       t.string :uuid
       t.timestamp :ts
       t.decimal :all_pollution
-      t.decimal :gas_pollution
       t.decimal :temperature
       t.decimal :humidity
       t.decimal :pm
-      t.decimal :pm100
-      t.decimal :voc100
+      t.decimal :co2
+      t.decimal :voc
     end
 
     add_index :foobot_observations, [:uuid, :ts], unique: true
